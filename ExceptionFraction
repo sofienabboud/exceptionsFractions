@@ -1,0 +1,44 @@
+package exceptionsFractions;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+
+public class ExceptionFraction {
+
+	public static void main(String[] args) {
+
+		Fraction sampleFraction = new Fraction(8,3);
+		
+		Scanner scan = new Scanner(System.in);
+		
+		
+		System.out.print ("Enter the numerator:  ");
+		while(true) {
+		try {
+		sampleFraction.setNumerator(scan.nextInt());
+		break;}
+		catch(InputMismatchException e) {
+			System.out.println("Not a number! Try again: ");
+			scan.nextLine();}}
+		
+	
+		System.out.print("Enter the denominator: ");
+		while (true) {
+		    try {
+		        int d = scan.nextInt();  
+		        if (d == 0) {
+		            System.out.println("Denominator can’t be 0! Try again: ");
+		            continue;}
+		        sampleFraction.setDenominator(d);
+		        break;}
+		    catch (InputMismatchException e) {
+		        System.out.println("Not a number! Try again: ");
+		        scan.nextLine();}}
+		
+
+		System.out.println ("The fraction " + sampleFraction.getNumerator() + "/" +
+				sampleFraction.getDenominator() + " is equal to " + sampleFraction.toMixedNumber());
+		
+		scan.close();}
+}
